@@ -1,32 +1,32 @@
 import { Button, Col, Form, Input, message, Row } from "antd";
 import Head from "next/head";
 import Image from "next/image";
-import React, { useState } from "react";
-import axios from 'axios'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 require("./index.less");
 
 export default function Home() {
   const [domainUrl, setDomainUrl] = useState("");
-  const [address,setAddress] = useState(null)
-  const [isCheckingHost,setIsCheckingHost]=useState(false)
+  const [address, setAddress] = useState(null);
+  const [isCheckingHost, setIsCheckingHost] = useState(false);
   const [form] = Form.useForm();
 
   const addDomainhandler = (domain_url) => {
     const body = {
       domain_url: domain_url,
     };
-    setIsCheckingHost(true)
+    setIsCheckingHost(true);
     const url = `/api/checkhost`;
-    axios.post(url, body)
+    axios
+      .post(url, body)
       .then((response) => {
-        console.log(response.data)
-       if(response.data){
-        setAddress(response.data.name)
-       }
-       else{
-         message.error("Domain doesn't exist")
-       }
-       setIsCheckingHost(false);
+        console.log(response.data);
+        if (response.data) {
+          setAddress(response.data.name);
+        } else {
+          message.error("Domain doesn't exist");
+        }
+        setIsCheckingHost(false);
       })
       .catch((error) => {
         console.log(error);
@@ -34,6 +34,22 @@ export default function Home() {
       });
   };
 
+  const updateConfig=(domainurl)=>{
+    const url = `/api/getConfig`;
+    axios
+      .get(domainurl)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+  useEffect(() => {
+    if (domainUrl) {
+      addDomainhandler(domainUrl);
+    }
+  }, [domainUrl]);
   return (
     <div className="container">
       <Head>
@@ -48,7 +64,7 @@ export default function Home() {
         <div className="domain-section">
           <Form form={form}>
             <Row className="" style={{}}>
-              <Col span={9} offset={6}>
+              <Col span={14} offset={5}>
                 <Form.Item name="domain_url" rules={[{ required: true }]}>
                   <Input
                     onChange={(e) => setDomainUrl(e.target.value)}
@@ -56,7 +72,7 @@ export default function Home() {
                   />
                 </Form.Item>
               </Col>
-              <Col span={9}>
+              {/*<Col span={9}>
                 <Button
                   type="primary"
                   size="middle"
@@ -66,14 +82,14 @@ export default function Home() {
                 >
                   HOST
                 </Button>
-              </Col>
+              </Col>*/}
               {!isCheckingHost && address && (
                 <div
                   className="h6 text-success text-center"
                   style={{ width: "100%" }}
                 >
-                  {" "}
-                  Address is : <mark className="text-lead text-underline">{address}</mark>
+                  Address is :
+                  <mark className="text-lead text-underline">{address}</mark>
                 </div>
               )}
             </Row>
@@ -81,7 +97,13 @@ export default function Home() {
         </div>
 
         <div className="grid">
-          <Button disabled={!address} className="card d-flex align-items-center justify-content-center" size="large" style={{ color: "black" }} >
+          <Button
+            disabled={!address}
+            className="card d-flex align-items-center justify-content-center"
+            size="large"
+            style={{ color: "black" }}
+            onClick={()=>updateConfig(domainUrl)}
+          >
             Deploy &rarr;
           </Button>
         </div>

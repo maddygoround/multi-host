@@ -1,11 +1,4 @@
 {
-    "admin": {
-        "listen": ":2019",
-        "origins": [
-            "caddystack:2019"
-        ],
-        "enforce_origin": false
-    },
     "apps": {
         "http": {
             "servers": {
