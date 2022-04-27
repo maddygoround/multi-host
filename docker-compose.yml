@@ -17,6 +17,7 @@ services:
       - caddy_config:/config
     ports:
       - "8443:8443"
+      - "2019:2019"
 
 volumes:
   caddy_data:
