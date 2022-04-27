@@ -1,0 +1,27 @@
+{
+    "apps": {
+        "http": {
+            "servers": {
+                "container": {
+                    "listen": [
+                        ":8443"
+                    ],
+                    "routes": [
+                        {
+                            "handle": [
+                                {
+                                    "handler": "reverse_proxy",
+                                    "upstreams": [
+                                        {
+                                            "dial": "fullstack:3000"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
