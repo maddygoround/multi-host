@@ -1,3 +1,3 @@
-
-set PWD=%CD%
-caddy run --config /etc/caddy/caddy.json
+#!/bin/bash
+nohup caddy run --config /usr/src/app/caddy.json &
+npm start
