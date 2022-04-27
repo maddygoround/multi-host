@@ -1,24 +1,36 @@
-import { Button, Col, Form, Input, Row } from "antd";
+import { Button, Col, Form, Input, message, Row } from "antd";
 import Head from "next/head";
 import Image from "next/image";
 import React, { useState } from "react";
+import axios from 'axios'
 require("./index.less");
 
 export default function Home() {
   const [domainUrl, setDomainUrl] = useState("");
+  const [address,setAddress] = useState(null)
+  const [isCheckingHost,setIsCheckingHost]=useState(false)
   const [form] = Form.useForm();
 
-  const addDomainhandler = (url) => {
+  const addDomainhandler = (domain_url) => {
     const body = {
-      url: url,
+      domain_url: domain_url,
     };
-    axios
-      .post("/api/checkhost", body)
+    setIsCheckingHost(true)
+    const url = `/api/checkhost`;
+    axios.post(url, body)
       .then((response) => {
-        console.log(response);
+        console.log(response.data)
+       if(response.data){
+        setAddress(response.data.name)
+       }
+       else{
+         message.error("Domain doesn't exist")
+       }
+       setIsCheckingHost(false);
       })
       .catch((error) => {
         console.log(error);
+        setIsCheckingHost(false);
       });
   };
 
@@ -38,7 +50,10 @@ export default function Home() {
             <Row className="" style={{}}>
               <Col span={9} offset={6}>
                 <Form.Item name="domain_url" rules={[{ required: true }]}>
-                  <Input onChange={(e) => setDomainUrl(e.target.value)} />
+                  <Input
+                    onChange={(e) => setDomainUrl(e.target.value)}
+                    placeholder="Enter site-url, that you wanna host on your domain"
+                  />
                 </Form.Item>
               </Col>
               <Col span={9}>
@@ -47,18 +62,28 @@ export default function Home() {
                   size="middle"
                   className=" mx-3"
                   onClick={() => addDomainhandler(domainUrl)}
+                  loading={isCheckingHost}
                 >
                   HOST
                 </Button>
               </Col>
+              {!isCheckingHost && address && (
+                <div
+                  className="h6 text-success text-center"
+                  style={{ width: "100%" }}
+                >
+                  {" "}
+                  Address is : <mark className="text-lead text-underline">{address}</mark>
+                </div>
+              )}
             </Row>
           </Form>
         </div>
 
         <div className="grid">
-          <a href="/" className="card" style={{ color: "black" }}>
-            <h2>Deploy &rarr;</h2>
-          </a>
+          <Button disabled={!address} className="card d-flex align-items-center justify-content-center" size="large" style={{ color: "black" }} >
+            Deploy &rarr;
+          </Button>
         </div>
       </main>
 
