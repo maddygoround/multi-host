@@ -4,7 +4,8 @@
             "servers": {
                 "container": {
                     "listen": [
-                        ":8443"
+                        ":80",
+                        ":443"
                     ],
                     "routes": [
                         {

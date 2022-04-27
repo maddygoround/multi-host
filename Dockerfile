@@ -55,6 +55,6 @@ RUN apt install caddy
 
 # Building app
 RUN npm run build
-EXPOSE 8443
+EXPOSE 443
 # Running the app
 CMD ./script.sh 
