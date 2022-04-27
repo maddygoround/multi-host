@@ -8,7 +8,20 @@ export default function Home() {
   const [domainUrl, setDomainUrl] = useState("");
   const [form] = Form.useForm();
 
-  
+  const addDomainhandler = (url) => {
+    const body = {
+      url: url,
+    };
+    axios
+      .post("/api/checkhost", body)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="container">
       <Head>
@@ -29,7 +42,12 @@ export default function Home() {
                 </Form.Item>
               </Col>
               <Col span={9}>
-                <Button type="primary" size="middle" className=" mx-3">
+                <Button
+                  type="primary"
+                  size="middle"
+                  className=" mx-3"
+                  onClick={() => addDomainhandler(domainUrl)}
+                >
                   HOST
                 </Button>
               </Col>

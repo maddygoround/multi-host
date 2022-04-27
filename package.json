@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js env=dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "antd": "^4.20.0",
+    "axios": "^0.27.1",
     "bootstrap": "^5.1.3",
     "next": "12.1.5",
     "next-compose-plugins": "^2.2.1",
