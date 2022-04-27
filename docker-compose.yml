@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  web:
+    container_name: fullstack
+    build: .
+    depends_on:
+      - caddy
+  caddy:
+    container_name: caddystack
+    image: caddy:2-alpine
+    restart: unless-stopped
+    command: caddy run --config /etc/caddy/caddy.json
+    volumes:
+      - $PWD/caddy.json:/etc/caddy/caddy.json
+      - $PWD/site:/srv
+      - caddy_data:/data
+      - caddy_config:/config
+    ports:
+      - "8443:8443"
+
+volumes:
+  caddy_data:
+  caddy_config:
