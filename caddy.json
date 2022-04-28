@@ -9,14 +9,6 @@
                     ],
                     "routes": [
                         {
-                            "match": [
-                                {
-                                    "host": [
-                                        "metawork.run",
-                                        "www.metawork.run"
-                                    ]
-                                }
-                            ],
                             "handle": [
                                 {
                                     "handler": "reverse_proxy",
