@@ -9,6 +9,13 @@
                     ],
                     "routes": [
                         {
+                            "match": [
+                                {
+                                    "host": [
+                                        "multi-host.fly.dev"
+                                    ]
+                                }
+                            ],
                             "handle": [
                                 {
                                     "handler": "reverse_proxy",
