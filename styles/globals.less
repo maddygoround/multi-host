@@ -4,7 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: var(--bg-color);
+  background-image: var(--bg-color);
   color: var(--text);
 }
 
@@ -30,4 +30,27 @@ a {
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.ant-btn{
+  // background-color: var(--primary);
+  border: none;
+  border-radius: 0.5rem;
+  color: var(--text) !important;
+}
+.ant-btn-dangerous.ant-btn-primary[disabled]{
+  background-color: var(--danger);
+  color: var(--text);
+  &:hover{
+    background-color: var(--danger);
+    color: var(--text);
+  }
+}
+.hightlight-text {
+  color: var(--text-gradient-1);
+}
+.bg-gray-700\/30 {
+  background-color: rgba(30, 31, 44, 0.6);
+}
+.border-violet-200\/10 {
+  border-color: rgb(221 214 254 / 0.1);
 }
