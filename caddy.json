@@ -12,7 +12,8 @@
                             "match": [
                                 {
                                     "host": [
-                                        "multi-host.fly.dev"
+                                        "metawork.run",
+                                        "www.metawork.run"
                                     ]
                                 }
                             ],
