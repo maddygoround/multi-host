@@ -6,9 +6,9 @@ const Header = () => {
   return (
     <div className="app-navbar">
       <div className="logo">
-        <a href="/">
+        
           <Logo />
-        </a>
+        
       </div>
     </div>
   );

@@ -67,7 +67,7 @@ export default function Home() {
               <br />
               Close to Your Users
             </h2>
-            <p class="text-lead my-2">
+            <p className="text-lead my-2">
               Run your full stack apps (and databases!) all over the world. No
               ops required.
             </p>
