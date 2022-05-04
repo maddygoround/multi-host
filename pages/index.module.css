@@ -1,0 +1,95 @@
+.main {
+  /* padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 100%;
+  height: calc(100vh - 70px);
+  box-sizing: border-box;
+  /* padding-top: 120px; */
+}
+.description-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  box-sizing: border-box;
+}
+.description-section h1 {
+  margin: 0;
+  line-height: 1.15;
+  color: var(--text);
+  font-size: 2rem;
+}
+.description-section p {
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.demo-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* min-height: 400px; */
+  width: 60%;
+   box-sizing: border-box;
+}
+
+.playarea {
+  background: var(--code-block-background);
+  border-radius: 8px;
+  box-shadow: none !important;
+  -webkit-filter: drop-shadow(0 3px 6px var(--code-block-shadow-color));
+  filter: drop-shadow(0 3px 6px var(--code-block-shadow-color));
+  overflow: hidden;
+  position: relative;
+  /* width: 650px; */
+  width: 100%;
+  box-sizing: border-box;
+  margin: 16px 24px;
+}
+.playarea .tabs-header {
+  background: rgba(49, 59, 82, 0.31);
+  color: hsla(0, 0%, 100%, 0.5);
+  font-size: 14px;
+  padding: 16px 24px !important;
+  overflow-x: auto;
+}
+.playarea .tabs-header span {
+  align-self: center;
+  color: hsla(0, 0%, 100%, 0.56);
+  font-size: 16px;
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier,
+    monospace;
+  white-space: nowrap;
+}
+.playarea .tabs-content {
+  max-height: 32.5vh;
+  position: static;
+  overflow-y: auto;
+}
+.tabs-content form {
+  padding: 20px 24px 28px;
+}
+.playarea .tabs-footer {
+  background: rgba(49, 59, 82, 0.31);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 12px;
+}
+@media (max-width: 767px) {
+ .demo-section{
+  width: 100%;
+ }
+ .description-section{
+   width: 100%;
+ }
+}

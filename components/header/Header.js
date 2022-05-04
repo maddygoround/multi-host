@@ -1,11 +1,11 @@
 import React from "react";
 import Logo from "../commons/logo/Logo";
-require("./Header.less");
+import styles from "./Header.module.css";
 
 const Header = () => {
   return (
-    <div className="app-navbar">
-      <div className="logo">
+    <div className={styles["app-navbar"]}>
+      <div className={styles["logo"]}>
         
           <Logo />
         

@@ -1,6 +1,5 @@
-import "bootstrap/dist/css/bootstrap.css";
-require("antd/dist/antd.less"); // or 'antd/dist/antd.less'
-require("../styles/globals.less");
+// import "bootstrap/dist/css/bootstrap.css";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;
