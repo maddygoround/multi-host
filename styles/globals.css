@@ -16,13 +16,13 @@
   --text: #fff;
   --text-gradient-2: #090a14;
   --text-gradient-1: #6f00ed;
-  --bg-color: linear-gradient(#090a14, #42228f);
+  --bg-color: linear-gradient(#090a14, #090a14 );
 
   --body-fonts: "Open Sans", "Segoe UI", "Source Sans Pro", Calibri, Candara,
     Arial, sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
-  --code-block-background: #2d2d2d;
+  --code-block-background: #ffffff;
   --code-block-output-background: #2d2d2d;
   --transition-all: all 250ms ease;
 }
@@ -115,8 +115,13 @@ label span {
   cursor: not-allowed;
 }
 
+.hightlight-container {
+  min-width: 650px;
+}
+
 .hightlight-text {
-  background: -webkit-linear-gradient(red,#6a6a72);
+  text-overflow: ellipsis;
+  background: white;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
